@@ -1,0 +1,65 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+       <h3>Edit</h3>
+       
+       <form method="post" action="">
+        {% csrf_token %}
+        
+            
+            <table>
+                <input type="hidden"  name="uid" value="{{v.id}}">
+                <tr>
+                    <td><lable>Employee name</lable></td>
+                    <td><input type="text" name="ename" placeholder="enter emp name" value="{{v.emp_name}}"></td>
+                </tr>
+                <tr>
+                    <td><label>Gender</label></td>
+                    <td>
+                    {% if v.gender is "male" %}
+                        <input type="radio" value="male" name="gender" checked="true">Male
+                        <input type="radio" value="female" name="gender">Female
+                    {% else %}
+                        <input type="radio" value="male" name="gender" >Male
+                        <input type="radio" value="female" name="gender" checked="true">Female
+                    {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Age</label></td>
+                    <td><input type="number" name="age" placeholder="enter age" value="{{v.age}}"></td>
+                </tr>
+                <tr>
+                    <td><label>Address</label></td>
+                    <td><textarea name="addr" rows="10" cols="20">{{v.address}}</textarea></td>
+                </tr>
+                <tr>
+                    <td><label>City</label></td>
+                    <td><select name="city">
+                        <option value="{{v.city}}">{{v.city}}</option>
+                        <option value="kannur"></option>
+                        <option value="calicut"></option>
+                        <option value="trivandrum"></option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Department</label></td>
+                    <td><input type="text" name="dept" placeholder="enter department" value="{{v.department}}"></td>
+                </tr>
+                <tr>
+                    <td><label>Salary</label></td>
+                    <td> <input type="number" name="sal" placeholder="enter  salary" value="{{v.salary}}"></td>
+                </tr>
+                <tr>
+                    <td> <input type="submit" value="Edit"></td>
+                </tr>
+            </table>
+           
+       
+     
+        </form>
+    </body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+       <h3>Emp Details</h3>
+       
+       <form method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><lable>Employee name</lable></td>
+                <td><input type="text" name="ename" placeholder="enter emp name"></td>
+            </tr>
+            <tr>
+                <td><label>Gender</label></td>
+                <td><input type="radio" name="gender" value="male">Male
+                    <input type="radio" name="gender" value="female">Female
+                </td>
+            </tr>
+            <tr>
+                <td><label>Age</label></td>
+                <td><input type="number" name="age" placeholder="enter age"></td>
+            </tr>
+            <tr>
+                <td><label>Address</label></td>
+                <td><textarea name="addr" rows="10" cols="20"></textarea></td>
+            </tr>
+            <tr>
+                <td><label>City</label></td>
+                <td><select name="city">
+                    <option value="">--city--</option>
+                    <option value="kannur">Kannur</option>
+                    <option value="calicut">Calicut</option>
+                    <option value="trivandrum">Trivandrum</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Department</label></td>
+                <td><input type="text" name="dept" placeholder="enter department"></td>
+            </tr>
+            <tr>
+                <td><label>Salary</label></td>
+                <td> <input type="number" name="sal" placeholder="enter  salary"></td>
+            </tr>
+            <tr>
+                <td> <input type="submit" value="Add"></td>
+            </tr>
+        </table>
+      
+        </form>
+        <h3>Emp Table</h3>
+        <table>
+             <tr>
+                <!--<th>Name</th>
+                <th>Email</th>
+                <th>Contact</th> -->
+                <th>No.</th>
+                <th>Emp_name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Department</th>
+                <th>salary</th>
+                
+                <th colspan="2">Actions</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <!-- <td>{{i.uid.name}}</td>
+                <td>{{i.uid.email}}</td>
+                <td>{{i.uid.mob}}</td> -->
+                <td>{{forloop.counter}}</td>
+                <td>{{i.emp_name}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.address}}</td>
+                <td>{{i.city}}</td>
+                <td>{{i.department}}</td>
+                <td>{{i.salary}}</td>
+                
+                <td><a href="{% url 'editdata' i.id %}" >Update</a></td>
+                <td><a href="{% url 'deletedata' i.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
